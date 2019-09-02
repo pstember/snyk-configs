@@ -13,7 +13,7 @@ Run the following command
 ## Usage
 
 ```python
-docker-compose up
+docker-compose up --scale broker-gitlab=2
 ```
 
 ## Contributing
