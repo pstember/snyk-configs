@@ -1,0 +1,15 @@
+# docker-compose.yml
+version: '3'
+services:
+  broker-gitlab:
+    image: snyk/broker:gitlab
+    ports:
+      - "7000:7000"
+    env_file: 
+      -./gitlab.env
+#  broker-github:
+#    image: snyk/broker:github
+#    ports:
+#      - "7001:7001"
+#    env_file: 
+#      -./github.env      
