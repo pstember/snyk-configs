@@ -1,0 +1,48 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.18.0 ()
+  creationTimestamp: null
+  labels:
+    io.kompose.service: broker-github-com
+  name: broker-github-com
+spec:
+  replicas: 2
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        io.kompose.service: broker-github-com
+    spec:
+      containers:
+      - env:
+        - name: BROKER_CLIENT_URL
+          valueFrom:
+            configMapKeyRef:
+              key: BROKER_CLIENT_URL
+              name: broker-github-com-github-com-env
+        - name: BROKER_TOKEN
+          valueFrom:
+            configMapKeyRef:
+              key: BROKER_TOKEN
+              name: broker-github-com-github-com-env
+        - name: GITHUB_TOKEN
+          valueFrom:
+            configMapKeyRef:
+              key: GITHUB_TOKEN
+              name: broker-github-com-github-com-env
+        - name: PORT
+          valueFrom:
+            configMapKeyRef:
+              key: PORT
+              name: broker-github-com-github-com-env
+        image: snyk/broker:github-com
+        name: broker-github-com
+        ports:
+          - containerPort: 7001
+        resources: {}
+      restartPolicy: Always
+status: {}

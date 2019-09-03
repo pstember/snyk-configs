@@ -1,0 +1,53 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.18.0 ()
+  creationTimestamp: null
+  labels:
+    io.kompose.service: broker-gitlab
+  name: broker-gitlab
+spec:
+  replicas: 2
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        io.kompose.service: broker-gitlab
+    spec:
+      containers:
+      - env:
+        - name: BROKER_CLIENT_URL
+          valueFrom:
+            configMapKeyRef:
+              key: BROKER_CLIENT_URL
+              name: broker-gitlab-gitlab-env
+        - name: BROKER_TOKEN
+          valueFrom:
+            configMapKeyRef:
+              key: BROKER_TOKEN
+              name: broker-gitlab-gitlab-env
+        - name: GITLAB
+          valueFrom:
+            configMapKeyRef:
+              key: GITLAB
+              name: broker-gitlab-gitlab-env
+        - name: GITLAB_TOKEN
+          valueFrom:
+            configMapKeyRef:
+              key: GITLAB_TOKEN
+              name: broker-gitlab-gitlab-env
+        - name: PORT
+          valueFrom:
+            configMapKeyRef:
+              key: PORT
+              name: broker-gitlab-gitlab-env
+        image: snyk/broker:gitlab
+        name: broker-gitlab
+        ports:
+          - containerPort: 7000
+        resources: {}
+      restartPolicy: Always
+status: {}
