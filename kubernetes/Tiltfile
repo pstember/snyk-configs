@@ -1,0 +1,19 @@
+print('Hello Tiltfile')
+
+print('Installing dashboard')
+k8s_yaml(['kubernetes-dashboard.yaml']) 
+
+print('Creating dashboard user')
+k8s_yaml(['dashboard-adminuser.yaml']) 
+
+print('Deploying Goof')
+k8s_yaml(['goof-namespace.yaml']) 
+k8s_yaml(['goof-deployment.yaml']) 
+k8s_yaml(['mongo-deployment.yaml']) 
+
+print('Deploying Snyk')
+k8s_yaml('snyk-monitor-namespace.yaml')
+k8s_yaml('snyk-monitor-secret.yaml')
+
+fetch_script = "helm fetch snyk-charts/snyk-monitor --untar --untardir ./deploy/helm/"
+template_script = "helm template ./deploy/helm/snyk-charts/snyk-monitor --namespace {} --set clusterName={}".format("snyk-monitor", "Production cluster")
