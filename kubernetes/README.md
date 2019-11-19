@@ -3,10 +3,15 @@
 ## Pre-requisities:
 - Add your integration token into the `snyk-monitor-secret.yaml` file
 - run the `setup.sh` script
+- install snyk with the following command
+```bash
+helm upgrade --install snyk-monitor snyk-charts/snyk-monitor --namespace snyk-monitor --set clusterName="Production cluster"
+```
 
 ## Checks:
 - go to http://localhost:3001/ to check that goof todo is up and running
 - Check the tilt console
+- Snyk might take a few minutes to load your cluster
 
 ## Accessing the dashboard:
 ```bash
