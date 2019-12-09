@@ -4,7 +4,6 @@
 .LSOverride
 
 # Sensitive file
-gitlab.env
-github-com.env
+*.env
 broker-github-com-github-com-env-configmap.yaml
 broker-gitlab-gitlab-env-configmap.yaml

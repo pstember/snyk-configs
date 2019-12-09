@@ -1,6 +1,7 @@
 # docker-compose.yml
 version: '3'
 services:
+ 
   broker-gitlab:
     image: snyk/broker:gitlab
     expose:
@@ -15,6 +16,13 @@ services:
     env_file: 
       - ./github-com.env      
 
+  jira:
+    image: snyk/broker:jira
+    expose:
+      - "7002"
+    env_file: 
+      - ./jira.env      
+
 
 # Load balancer to manager multiple instance of each broker
   nginx:
@@ -24,6 +32,7 @@ services:
       depends_on:
         - broker-gitlab
         - broker-github-com
+        - jira
       ports:
         - "4000:4000"
         - "4001:4001"
