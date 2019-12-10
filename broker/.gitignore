@@ -7,3 +7,4 @@
 *.env
 broker-github-com-github-com-env-configmap.yaml
 broker-gitlab-gitlab-env-configmap.yaml
+Dockerfile-gitlab

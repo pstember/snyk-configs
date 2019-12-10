@@ -2,6 +2,21 @@
 
 This is an example of how various broker can be configured together for deployment.
 
+This information is based on the following ressource [Snyk Broker Docker Hub](https://hub.docker.com/r/snyk/broker)
+
+## Docker
+
+Rename `Dockerfile-gitlab.template` to `Dockerfile-gitlab` and provide the value for the various fields in it.
+
+Build the image by adapting the following command:
+
+```bash
+docker build -t pstembersnyk:broker-gitlab -f Dockerfile-gitlab .
+docker run pstembersnyk:broker-gitlab
+docker kill $(docker ps | grep pstembersnyk:broker-gitlab | grep -E "^[a-fA-F0-9]+" | awk '{print $1}')
+```
+Please note, that you might want to adapt the above command and replace `pstembersnyk:broker-gitlab` by the name you gave to your image when you built it.
+
 ## Docker-compose
 
 ### Installation
@@ -14,11 +29,17 @@ Run the following command
 
 ### Usage
 
+####Starting
 ```bash
 docker-compose pull && docker-compose up --scale broker-gitlab=2 --scale broker-github-com=2
 ```
 
 You can check that the set-up was sucessful by visiting `http://localhost:4000/healthcheck`
+
+####Shutting down
+```bash
+docker-compose down
+```
 
 ## Kubernetes
 
