@@ -29,14 +29,14 @@ Run the following command
 
 ### Usage
 
-####Starting
+#### Starting
 ```bash
 docker-compose pull && docker-compose up --scale broker-gitlab=2 --scale broker-github-com=2
 ```
 
 You can check that the set-up was sucessful by visiting `http://localhost:4000/healthcheck`
 
-####Shutting down
+#### Shutting down
 ```bash
 docker-compose down
 ```
