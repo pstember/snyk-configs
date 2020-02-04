@@ -15,5 +15,15 @@ print('Deploying Snyk')
 k8s_yaml('snyk-monitor-namespace.yaml')
 k8s_yaml('snyk-monitor-secret.yaml')
 
-print('Please run the helm install to load the snyk monitoring')
+# print('Please run the helm install to load the snyk monitoring')
 
+yaml = helm(
+  'deploy/helm/snyk-monitor',
+  # The release name, equivalent to helm --name
+  name='snyk-monitor',
+  # The namespace to install in, equivalent to helm --namespace
+  namespace='snyk-monitor',
+  # Values to set from the command-line
+  set=['clusterName="Production cluster"']
+  )
+k8s_yaml(yaml)

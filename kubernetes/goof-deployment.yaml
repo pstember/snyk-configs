@@ -44,4 +44,6 @@ spec:
         env: 
           - name: "DOCKER"
             value: "1"
+      - image: gcr.io/google-containers/fluentd-sidecar-gcp:1.4
+        name: fluentd-sidecar-gcp
       restartPolicy: Always
