@@ -13,6 +13,7 @@ if exists ktilt ; then
 else
 	# To install tilt
     curl -fsSL https://raw.githubusercontent.com/windmilleng/tilt/master/scripts/install.sh | bash
+    alias ktilt='/usr/local/bin/tilt'
 fi
 
 if exists helm ; then

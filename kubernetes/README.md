@@ -1,9 +1,20 @@
 # Super quick Snyk k8s monitor install.
 
 ## Pre-requisities:
+- Having the `snyk-monitoring` namespace
+- Having an application/deploymebt to scan
+- Having `helm` and `tilt` installed
+
+
+This script is taking care of all of this, and will install the missing elements
+
+## Installation
 - Add your integration token into the `snyk-monitor-secret.yaml` file
-- run the `setup.sh` script
-- install snyk with the following command
+- Run the `setup.sh` script
+- Enjoy
+
+
+Snyk for K8s is actually installed with the following command
 ```bash
 helm upgrade --install snyk-monitor snyk-charts/snyk-monitor --namespace snyk-monitor --set clusterName="Production cluster"
 ```
