@@ -11,6 +11,9 @@ This script is taking care of all of this, and will install the missing elements
 ## Installation
 - Add your integration token into the `snyk-monitor-secret.yaml` file
 - Run the `setup.sh` script
+- Wait for Tilt to install everything
+- Stop tilt
+- Run the snyk install manually `helm upgrade --install snyk-monitor snyk-charts/snyk-monitor --namespace snyk-monitor --set clusterName="Production cluster"`
 - Enjoy
 
 
