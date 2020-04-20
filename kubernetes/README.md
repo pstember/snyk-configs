@@ -1,7 +1,6 @@
 # Super quick Snyk k8s monitor install.
 
 ## Pre-requisities:
-- Having the `snyk-monitor` namespace
 - Having an application/deploymebt to scan
 - Having `helm` and `tilt` installed
 
