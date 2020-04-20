@@ -1,7 +1,7 @@
 # Super quick Snyk k8s monitor install.
 
 ## Pre-requisities:
-- Having `helm` and `tilt` installed
+- Having [homebrew](https://brew.sh/) installed
 
 
 This script is taking care of all of this, and will install the missing elements
