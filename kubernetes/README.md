@@ -1,7 +1,7 @@
 # Super quick Snyk k8s monitor install.
 
 ## Pre-requisities:
-- Having the `snyk-monitoring` namespace
+- Having the `snyk-monitor` namespace
 - Having an application/deploymebt to scan
 - Having `helm` and `tilt` installed
 
@@ -9,7 +9,7 @@
 This script is taking care of all of this, and will install the missing elements
 
 ## Installation
-- Add your integration token into the `snyk-monitor-secret.yaml` file
+- Add your Snyk Kubernetes integration token (generated in Snyk) into the `snyk-monitor-secret.yaml` file. *You need to base64 encode it first (google ‘base64 encoder’)*
 - Run the `setup.sh` script
 - Wait for Tilt to install everything
 - Stop tilt

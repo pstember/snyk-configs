@@ -21,7 +21,7 @@ if exists helm ; then
 else
 	# To install helm
 	brew install kubernetes-helm
-	helm init
+	helm init -wait
 fi
 
 helm repo add snyk-charts https://snyk.github.io/kubernetes-monitor/
@@ -42,6 +42,6 @@ echo http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernet
 
 # To get snyk up and running
 # I couldn't get this to work in Tile because I need a different namespace and couldn't work out how to get it to switch context
-echo helm upgrade --install snyk-monitor snyk-charts/snyk-monitor --namespace snyk-monitor --set clusterName="Production cluster"
+# echo helm upgrade --install snyk-monitor snyk-charts/snyk-monitor --namespace snyk-monitor --set clusterName="Production cluster"
 
 ktilt up
