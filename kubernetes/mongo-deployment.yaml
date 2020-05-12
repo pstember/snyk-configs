@@ -14,12 +14,15 @@ spec:
 
 
 ---
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: goof-mongo
   namespace: goof-prod  
 spec:
+  selector:
+    matchLabels:
+      app: goof-mongo
   replicas: 1
   strategy: {}
   template:
