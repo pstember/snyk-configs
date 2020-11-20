@@ -21,12 +21,11 @@ if exists helm ; then
 else
 	# To install helm
 	brew install kubernetes-helm
-	helm init -wait
 fi
 
-helm repo add snyk-charts https://snyk.github.io/kubernetes-monitor/
+helm repo add snyk-charts https://github.com/snyk/kubernetes-monitor
 helm repo update
-
+helm fetch snyk-charts/snyk-monitor --untar --untardir ./deploy/helm/ && helm template ./deploy/helm/snyk-monitor --namespace snyk-monitor --set clusterName='Production'
 
 
 # Print your token with the following command (for the dashboard)
